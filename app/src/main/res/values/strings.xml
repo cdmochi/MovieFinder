@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieFinder</string>
+    <string name="all_movies">ALL MOVIES</string>
+    <string name="favorite">FAVORITE</string>
+</resources>
