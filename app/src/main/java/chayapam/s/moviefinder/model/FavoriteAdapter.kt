@@ -1,43 +1,43 @@
-package chayapam.s.moviefinder
+package chayapam.s.moviefinder.model
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import chayapam.s.moviefinder.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_item_view.view.*
 
-class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
+class FavoriteAdapter(var list : ArrayList<Movie>) : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>(){
 
 
-    val list : ArrayList<Movie> = ArrayList()
-
-    fun setNewList(newList : List<Movie>) {
-        list.clear()
-        list.addAll(newList)
-    }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
         val image = itemView.ui_movieImage
         val movieName = itemView.ui_movieTitle
         val date = itemView.ui_date
-        val cat = itemView.ui_movieCat
+        val genere = itemView.ui_movieCat
 
         fun bind(position : Int) {
             val itemAtPos = list[position]
             loadImageWithPicasso(itemAtPos.posterImage,image)
             movieName.text = itemAtPos.name
             date.text = itemAtPos.date
-            cat.text = itemAtPos.cat
+            genere.text = itemAtPos.genre
 
         }
 
     }
 
+    fun setNewList(newList : ArrayList<Movie>) {
+        this.list = newList
+    }
+
     fun loadImageWithPicasso(uri : String, imageView : ImageView) {
-        Picasso.get().load(uri).into(imageView)
+        Picasso.get().load(uri).fit()
+            .into(imageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
