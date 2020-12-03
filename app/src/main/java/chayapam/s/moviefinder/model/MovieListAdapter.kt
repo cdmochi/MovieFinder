@@ -39,24 +39,17 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
         fun bind(position : Int) {
             val itemAtPos = list[position]
             loadImageWithPicasso(itemAtPos.posterImage,image)
+            date.text = itemAtPos.date
             movieName.text = itemAtPos.name
             genere.text = itemAtPos.genre
 
-            val dateInt = itemAtPos.date.substring(5,7).toInt()
-            val c = Calendar.getInstance().get(dateInt)
 
-            date.text = formatDate(c)
 
 
         }
 
     }
 
-    fun formatDate(c : Int) : String{
-        val formatter = Formatter()
-        val monthName = formatter.format("%tb",c)
-        return monthName.toString()
-    }
 
     fun loadImageWithPicasso(uri : String, imageView : ImageView) {
         Picasso.get().load(uri).fit()

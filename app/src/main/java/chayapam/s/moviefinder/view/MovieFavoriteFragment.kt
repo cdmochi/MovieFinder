@@ -47,8 +47,12 @@ class MovieFavoriteFragment : Fragment(){
         bindingViews()
 
         ui_favorite_button.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_customMovieDialog_to_favoriteMovieListFragment)
+            Navigation.findNavController(it).navigateUp()
             model.addMovie(movie)
+        }
+
+        ui_cancel_button.setOnClickListener{
+            Navigation.findNavController(it).navigateUp()
         }
 
 

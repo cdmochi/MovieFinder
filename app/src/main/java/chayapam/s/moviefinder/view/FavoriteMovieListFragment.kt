@@ -40,6 +40,7 @@ class FavoriteMovieListFragment : Fragment() {
         this.container = view.findViewById(R.id.ui_noFavMoviesContainer) as LinearLayout
         this.recyclerView = view.findViewById(R.id.ui_favoriteRecycler) as RecyclerView
 
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,40 +48,24 @@ class FavoriteMovieListFragment : Fragment() {
         model = ViewModelProviders.of(requireActivity()).get(FavoriteViewModel::class.java)
         model.list.observe(viewLifecycleOwner,object : Observer<ArrayList<Movie>> {
             override fun onChanged(t: ArrayList<Movie>?) {
+                if (t!!.isEmpty()) {
+                    container.visibility = View.VISIBLE
+                }
                 adapter.setNewList(t!!)
                 adapter.notifyDataSetChanged()
+                container.visibility = View.INVISIBLE
             }
 
         })
 
 
         this.adapter = FavoriteAdapter(model.list.value!!)
+        container.visibility = View.VISIBLE
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext
             ,LinearLayoutManager.VERTICAL,false)
 
 
-        val itemTouchHelper = object : ItemTouchHelper.Callback() {
-            override fun getMovementFlags(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder
-            ): Int {
-                TODO("Not yet implemented")
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                TODO("Not yet implemented")
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                TODO("Not yet implemented")
-            }
-
-        }
 
 
     }

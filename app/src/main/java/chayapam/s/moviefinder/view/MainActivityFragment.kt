@@ -1,5 +1,6 @@
 package chayapam.s.moviefinder.view
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,9 +16,14 @@ import chayapam.s.moviefinder.model.Movie
 import chayapam.s.moviefinder.model.MovieListAdapter
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.httpGet
+import com.google.gson.JsonObject
 import org.json.JSONException
+import org.json.JSONObject
 
 class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
 
@@ -27,7 +33,6 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter : MovieListAdapter
-
     private var mMovies = mutableListOf<Movie>()
 
     //Volley Request Queue
@@ -46,6 +51,7 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
         Log.d(TAG,"Api is being called")
         val URL = "https://8fc4c056-61b0-4e8b-a053-463874366cce.mock.pstmn.io/get_movie_avaiable"
         val newMoviesList = ArrayList<Movie>()
+
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET,
             URL,
@@ -85,8 +91,9 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
 
         mQueue.add(jsonObjectRequest)
 
-
     }
+
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -122,7 +129,6 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
 
         val action = MainActivityFragmentDirections.actionMainActivityFragmentToCustomMovieDialog(movieSelected)
         Navigation.findNavController(requireView()).navigate(action)
-
         Toast.makeText(activity?.applicationContext,"FAV CLICKED",Toast.LENGTH_LONG).show()
     }
 

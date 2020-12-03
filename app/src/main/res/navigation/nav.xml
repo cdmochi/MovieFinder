@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainActivityFragment_to_customMovieDialog"
             app:destination="@id/customMovieDialog" />
+        <action
+            android:id="@+id/action_mainActivityFragment_to_favoriteMovieListFragment"
+            app:destination="@id/favoriteMovieListFragment" />
     </fragment>
     <fragment
         android:id="@+id/customMovieDialog"
@@ -30,5 +33,9 @@
         android:id="@+id/favoriteMovieListFragment"
         android:name="chayapam.s.moviefinder.view.FavoriteMovieListFragment"
         android:label="fragment_favorite_movie_list"
-        tools:layout="@layout/fragment_favorite_movie_list" />
+        tools:layout="@layout/fragment_favorite_movie_list" >
+        <action
+            android:id="@+id/action_favoriteMovieListFragment_to_mainActivityFragment"
+            app:destination="@id/mainActivityFragment" />
+    </fragment>
 </navigation>

@@ -15,12 +15,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
+            android:tag="all_movies"
             android:id="@+id/ui_allMoviesTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/all_movies" />
 
         <com.google.android.material.tabs.TabItem
+            android:tag="favorites"
             android:id="@+id/ui_favTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
