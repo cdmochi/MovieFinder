@@ -1,88 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ui_movie_image_Fav"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/ui_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Header"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ui_movie_image_Fav" />
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/ui_genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.8"
-        android:text="Genre"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        app:layout_constraintStart_toStartOf="@+id/ui_header"
-        app:layout_constraintTop_toBottomOf="@+id/ui_header" />
+                <ImageView
+                    android:id="@+id/ui_movie_image_Fav"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:contentDescription="@string/MoviePictureContentDes_ImageView"
+                     />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ui_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Header"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ui_movie_image_Fav" />
+
+                    <TextView
+                        android:id="@+id/ui_genre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:alpha="0.8"
+                        android:text="@string/GenreCaption_TextView"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+                    <Button
+                        android:id="@+id/ui_favorite_button"
+                        android:layout_width="115dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:text="@string/FavoriteText_Button" />
+
+                </LinearLayout>
 
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/ui_favorite_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ui_genre"
-        app:layout_constraintVertical_bias="0.411">
+            </androidx.appcompat.widget.Toolbar>
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
             android:id="@+id/ui_text_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="325dp"
             android:layout_margin="16dp"
-            android:text="TextView"
+            android:gravity="center"
+            android:text=""
             app:layout_constraintBottom_toTopOf="@+id/ui_favorite_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ui_genre" />
+            app:layout_constraintTop_toBottomOf="@+id/ui_genre"
+            tools:text="@string/MockTextContentText_TextView" />
 
 
-    </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/ui_favorite_button"
-        android:layout_width="390dp"
-        android:layout_height="42dp"
-        style="@style/Widget.MaterialComponents.Button"
-        android:textSize="18sp"
-        android:text="Favorite"
-        app:layout_constraintBottom_toTopOf="@+id/ui_cancel_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    </androidx.core.widget.NestedScrollView>
+
+
+    <Button
+        android:layout_margin="4dp"
         android:id="@+id/ui_cancel_button"
-        android:layout_width="390dp"
-        android:layout_height="42dp"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textSize="18sp"
-        android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/CancelText_Button" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

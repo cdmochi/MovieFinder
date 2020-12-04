@@ -1,9 +1,10 @@
 package chayapam.s.moviefinder.view
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.*
-import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +15,7 @@ import chayapam.s.moviefinder.R
 import chayapam.s.moviefinder.viewmodel.FavoriteViewModel
 import com.google.android.material.button.MaterialButton
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.movie_favorite_fragment.*
 
 class MovieFavoriteFragment : Fragment(){
@@ -34,10 +36,9 @@ class MovieFavoriteFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.movie_favorite_fragment,container,false)
 
 
-        return view
+        return inflater.inflate(R.layout.movie_favorite_fragment,container,false)
     }
 
 
@@ -64,10 +65,6 @@ class MovieFavoriteFragment : Fragment(){
         genre.text = movie.genre
         loadImageFromUrl(movie.posterImage,posterImage)
         text.text = movie.detail
-
-
-
-
     }
 
     private fun loadImageFromUrl(uri : String, view : ImageView) {
@@ -80,6 +77,11 @@ class MovieFavoriteFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         model = ViewModelProviders.of(requireActivity()).get(FavoriteViewModel::class.java)
+        hideTabLayoutFromMainActivity()
+    }
+
+    private fun hideTabLayoutFromMainActivity() {
+        requireActivity().ui_tabLayout.visibility = View.GONE
     }
 
 
@@ -89,7 +91,8 @@ class MovieFavoriteFragment : Fragment(){
         posterImage = view.findViewById(R.id.ui_movie_image_Fav) as ImageView
         header = view.findViewById(R.id.ui_header) as TextView
         genre = view.findViewById(R.id.ui_genre) as TextView
-        addFavMovie = view.findViewById(R.id.ui_favorite_button) as MaterialButton
+        addFavMovie = ui_favorite_button as MaterialButton
+
     }
 
 

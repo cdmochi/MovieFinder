@@ -16,6 +16,7 @@ import chayapam.s.moviefinder.model.FavoriteAdapter
 import chayapam.s.moviefinder.viewmodel.FavoriteViewModel
 import chayapam.s.moviefinder.R
 import chayapam.s.moviefinder.model.Movie
+import kotlinx.android.synthetic.main.activity_main.*
 
 class FavoriteMovieListFragment : Fragment() {
 
@@ -32,6 +33,9 @@ class FavoriteMovieListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_favorite_movie_list, container, false)
 
         return view
+    }
+    private fun showTabLayoutFromMainActivity() {
+        requireActivity().ui_tabLayout.visibility = View.VISIBLE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,6 +69,7 @@ class FavoriteMovieListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext
             ,LinearLayoutManager.VERTICAL,false)
 
+        showTabLayoutFromMainActivity()
 
 
 

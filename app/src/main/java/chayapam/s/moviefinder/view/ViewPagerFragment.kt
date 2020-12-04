@@ -49,13 +49,21 @@ class ViewPagerFragment : Fragment() {
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        showTabLayoutFromMainActivity()
+    }
+
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
     }
 
+    private fun showTabLayoutFromMainActivity() {
+        requireActivity().ui_tabLayout.visibility = View.VISIBLE
+    }
+
     private fun initViews() {
         viewP = viewpager2
-        view
     }
 
 }
