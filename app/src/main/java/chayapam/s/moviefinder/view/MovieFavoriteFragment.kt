@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import chayapam.s.moviefinder.model.Movie
 import chayapam.s.moviefinder.R
 import chayapam.s.moviefinder.viewmodel.FavoriteViewModel
+import com.google.android.material.button.MaterialButton
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_favorite_fragment.*
 
@@ -21,7 +22,7 @@ class MovieFavoriteFragment : Fragment(){
     private lateinit var genre : TextView
     private lateinit var posterImage: ImageView
     private lateinit var text : TextView
-    private lateinit var addFavMovie : Button
+    private lateinit var addFavMovie : MaterialButton
     private lateinit var model : FavoriteViewModel
 
     private lateinit var movie : Movie
@@ -88,7 +89,7 @@ class MovieFavoriteFragment : Fragment(){
         posterImage = view.findViewById(R.id.ui_movie_image_Fav) as ImageView
         header = view.findViewById(R.id.ui_header) as TextView
         genre = view.findViewById(R.id.ui_genre) as TextView
-        addFavMovie = view.findViewById(R.id.ui_favorite_button)
+        addFavMovie = view.findViewById(R.id.ui_favorite_button) as MaterialButton
     }
 
 

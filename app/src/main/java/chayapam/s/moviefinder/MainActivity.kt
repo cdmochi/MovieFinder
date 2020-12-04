@@ -4,10 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.get
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import chayapam.s.moviefinder.model.Movie
+import chayapam.s.moviefinder.model.ViewPageAdapter
+import chayapam.s.moviefinder.view.FavoriteMovieListFragment
+import chayapam.s.moviefinder.view.MainActivityFragment
+import chayapam.s.moviefinder.view.MovieFavoriteFragment
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
@@ -24,27 +31,24 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         tabLayout = ui_tabLayout
 
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                val navController = this@MainActivity.findNavController(R.id.nav_host_fragment_container)
-                when(tab?.position) {
-                    0 -> { navController.navigate(R.id.mainActivityFragment) }
-                    1 -> { navController.navigate(R.id.favoriteMovieListFragment) }
-                }
-            }
-
-
-
-
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-
-        })
+//        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                val navController = this@MainActivity.findNavController(R.id.nav_host_fragment_container)
+//                when(tab?.position) {
+//                    0 -> { navController.navigate(R.id.mainActivityFragment) }
+//                    1 -> { navController.navigate(R.id.favoriteMovieListFragment) }
+//                }
+//            }
+//
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//            }
+//
+//        })
 
 
 

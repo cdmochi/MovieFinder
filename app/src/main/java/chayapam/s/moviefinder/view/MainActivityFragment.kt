@@ -19,8 +19,6 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.httpGet
 import com.google.gson.JsonObject
 import org.json.JSONException
 import org.json.JSONObject
@@ -43,6 +41,7 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
         this.mQueue = Volley.newRequestQueue(activity?.applicationContext)
         onInitializeRecycler()
         callApi()
+
 
     }
 
@@ -127,9 +126,9 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
     override fun onItemClick(position: Int) {
         val movieSelected = mMovies[position]
 
-        val action = MainActivityFragmentDirections.actionMainActivityFragmentToCustomMovieDialog(movieSelected)
+        val action = ViewPagerFragmentDirections.actionViewPagerFragmentToCustomMovieDialog(movieSelected)
         Navigation.findNavController(requireView()).navigate(action)
-        Toast.makeText(activity?.applicationContext,"FAV CLICKED",Toast.LENGTH_LONG).show()
+        Toast.makeText(activity,"Adding Movie to your list",Toast.LENGTH_LONG).show()
     }
 
 
