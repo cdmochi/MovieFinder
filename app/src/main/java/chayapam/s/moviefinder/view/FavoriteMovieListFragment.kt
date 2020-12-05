@@ -23,7 +23,6 @@ class FavoriteMovieListFragment : Fragment() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var adapter : FavoriteAdapter
     private lateinit var container : LinearLayout
-
     private lateinit var model : FavoriteViewModel
 
     override fun onCreateView(
@@ -40,11 +39,8 @@ class FavoriteMovieListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         this.container = view.findViewById(R.id.ui_noFavMoviesContainer) as LinearLayout
         this.recyclerView = view.findViewById(R.id.ui_favoriteRecycler) as RecyclerView
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,7 +51,7 @@ class FavoriteMovieListFragment : Fragment() {
                 if (t!!.isEmpty()) {
                     container.visibility = View.VISIBLE
                 }
-                adapter.setNewList(t!!)
+                adapter.setNewList(t)
                 adapter.notifyDataSetChanged()
                 container.visibility = View.INVISIBLE
             }

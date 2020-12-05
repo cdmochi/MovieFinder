@@ -24,7 +24,8 @@
         android:label="CustomMovieDialog" >
         <action
             android:id="@+id/action_customMovieDialog_to_favoriteMovieListFragment"
-            app:destination="@id/favoriteMovieListFragment" />
+            app:destination="@id/favoriteMovieListFragment"
+            app:exitAnim="@anim/fragment_fade_exit" />
         <argument
             android:name="movie"
             app:argType="chayapam.s.moviefinder.model.Movie" />
@@ -45,6 +46,8 @@
         tools:layout="@layout/fragment_view_pager" >
         <action
             android:id="@+id/action_viewPagerFragment_to_customMovieDialog"
-            app:destination="@id/customMovieDialog" />
+            app:destination="@id/customMovieDialog"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 </navigation>

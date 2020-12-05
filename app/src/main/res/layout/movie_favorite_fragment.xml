@@ -44,6 +44,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#FFFFFF"
                         android:id="@+id/ui_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -55,6 +56,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/ui_movie_image_Fav" />
 
                     <TextView
+                        android:textColor="#E6FFFFFF"
                         android:id="@+id/ui_genre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -90,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="325dp"
             android:layout_margin="16dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:gravity="center"
             android:text=""
             app:layout_constraintBottom_toTopOf="@+id/ui_favorite_button"

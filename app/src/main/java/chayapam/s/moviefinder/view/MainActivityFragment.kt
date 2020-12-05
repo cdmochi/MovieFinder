@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import chayapam.s.moviefinder.*
 import chayapam.s.moviefinder.model.Movie
 import chayapam.s.moviefinder.model.MovieListAdapter
@@ -28,7 +30,9 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
 
     companion object {
         const val TAG = "MainActivityFragment"
+
     }
+
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter : MovieListAdapter
@@ -100,18 +104,16 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
         Log.d(TAG,"onActivityCreated")
     }
 
-
-
     private fun onInitializeRecycler() {
         adapter = MovieListAdapter()
         adapter.setItemClickListener(this)
     }
 
     private fun setUpRecycler() {
-        this.recyclerView.layoutManager = LinearLayoutManager(activity?.applicationContext,LinearLayoutManager.VERTICAL,false)
+//      this.recyclerView.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        this.recyclerView.layoutManager = GridLayoutManager(activity,2,GridLayoutManager.VERTICAL,false)
         this.recyclerView.adapter = adapter
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_activity, container, false)
@@ -129,8 +131,6 @@ class MainActivityFragment : Fragment() , MovieListAdapter.OnItemClickListener {
 
         val action = ViewPagerFragmentDirections.actionViewPagerFragmentToCustomMovieDialog(movieSelected)
         Navigation.findNavController(requireView()).navigate(action)
-        Toast.makeText(activity,"Adding Movie to your list",Toast.LENGTH_LONG).show()
     }
-
 
 }

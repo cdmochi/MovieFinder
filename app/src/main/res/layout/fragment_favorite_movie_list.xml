@@ -7,12 +7,11 @@
     tools:context=".view.FavoriteMovieListFragment">
 
     <TextView
-        android:alpha=".8"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Favorites"
+        android:alpha=".8"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
